@@ -1,0 +1,30 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src/dev"
+  "src/main"
+  "src/test"]
+
+ :dependencies
+ [[cider/cider-nrepl "0.18.0"]
+  [binaryage/devtools "0.9.10"]]
+
+ :builds
+ {:app
+  {:target :browser
+   :output-dir "resources/public/js"
+   :asset-path "/js"
+   :modules {:main {:entries [swui.core]}}
+
+   ;; Here is some dev-specific config
+   ;; :dev {:compiler-options {:devcards true}}
+
+   ;; Here is some production config
+   ;; :release {:compiler-options {:optimizations :simple}}
+
+   :devtools {:preloads []
+              :http-root "resources/public"
+              :http-port 1234}}}
+
+ :http {:port 9001}
+
+ :nrepl {:port 9000}}
