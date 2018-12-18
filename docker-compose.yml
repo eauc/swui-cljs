@@ -1,0 +1,17 @@
+version: "3.4"
+services:
+  swui-cljs:
+    container_name: swui-cljs
+    build:
+      context: .
+      target: install
+    restart: always
+    ports:
+      - "1234:1234"
+      - "9000:9000"
+      - "9001:9001"
+    command: npm run dev
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - /app/.shadow-cljs
